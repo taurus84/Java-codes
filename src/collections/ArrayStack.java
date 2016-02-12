@@ -24,7 +24,7 @@ public class ArrayStack<T> implements Stack<T> {
      */
     public void push(T element) {
     	if(size>=elements.length)
-    		throw new BufferOverflowException();
+    		throw new StackOverflowException();
         elements[ size ] = element;
         size++;
     }
