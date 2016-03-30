@@ -19,28 +19,24 @@ public class Uppgift2 {
 	}
 	
 	public static void main(String[] args) {
-//		Uppgift2 prog = new Uppgift2();
-//		long nbr = 0, biggestNbr = 0;
-//		int jNbr = 0, iNbr = 0;
-//		for(int i = 100; i < 1000; i++) {
-//			for(int j = 100; j < 1000; j++) {
-//				nbr = i*j;
-//				if(prog.isPalindrome(nbr)) {
-//					if(nbr > biggestNbr) {
-//						biggestNbr = nbr;
-//					}
-//					
-//					jNbr = j;
-//					iNbr = i;
-//				}
-//			}
-//		}
+		Uppgift2 prog = new Uppgift2();
+		long nbr = 0, biggestNbr = 0;
+		int jNbr = 0, iNbr = 0;
+		for(int i = 100; i < 1000; i++) {
+			for(int j = 100; j < 1000; j++) {
+				nbr = i*j;
+				if(prog.isPalindrome(nbr)) {
+					if(nbr > biggestNbr) {
+						biggestNbr = nbr;
+					}
+					
+					jNbr = j;
+					iNbr = i;
+				}
+			}
+		}
 		
-//		System.out.println(biggestNbr);
-//		System.out.println(jNbr);
-//		System.out.println(iNbr);
-		int jNbr = 5001, iNbr = 0;
-		iNbr =Integer.bitCount(jNbr);
+		System.out.println(biggestNbr);
 		System.out.println(jNbr);
 		System.out.println(iNbr);
 	}
