@@ -84,7 +84,9 @@ public class OddsConverterPanel extends JPanel {
 		AL listener = new AL();
 	}
 	
-	
+	/**
+	 * filling panels with objects
+	 */
 	private void initializePanels() {
 		pnlCheckBox.setBackground(new Color((int)(Math.random() * 0x1000000)));
 		pnlProcent.setBackground(new Color((int)(Math.random() * 0x1000000)));
