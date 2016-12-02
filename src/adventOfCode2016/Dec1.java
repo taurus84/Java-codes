@@ -25,9 +25,17 @@ public class Dec1 {
         BufferedReader r = new BufferedReader(new FileReader("src/adventOfCode2016/dec1.txt"));
         String s;
         int latestFoundDigit = 5;
+        char c;
+        int col = 0;
         while ((s = r.readLine()) != null) {
             for(int i = 0; i < s.length(); i++) {
-                latestFoundDigit = SM[latestFoundDigit][s.charAt(i)];
+            	c = s.charAt(i);
+            	if(c == 'U')		col = 0;
+            	else if(c == 'D')	col = 1;
+            	else if(c == 'R')	col = 2;
+            	else if(c == 'L')	col = 3;
+                latestFoundDigit = SM[latestFoundDigit-1][col];
+            	
             }
             System.out.println(latestFoundDigit);
         }
