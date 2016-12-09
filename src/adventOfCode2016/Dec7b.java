@@ -12,7 +12,6 @@ public class Dec7b {
 		 BufferedReader r = new BufferedReader(new FileReader("src/adventOfCode2016/dec7.txt"));
 		 String s;
 		 int counter = 0;
-		 
 		 /* för varje [ finns en ] */
 		 while((s = r.readLine()) != null) {
 			 ArrayList<String> supernet = new ArrayList<String>();	//outside square brackets
