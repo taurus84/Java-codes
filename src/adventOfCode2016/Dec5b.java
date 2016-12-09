@@ -13,6 +13,7 @@ public class Dec5b {
 		String doorID = "cxdnnyjw", md5hash, hashText;
 		int counter = 0;
 		MessageDigest m = MessageDigest.getInstance("MD5");
+		if(password[0] == '\u0000') System.out.println("NULLAD");
 		do {
 			md5hash = doorID.concat(counter + "");
 //			System.out.println(md5hash);
@@ -35,7 +36,7 @@ public class Dec5b {
 	}
 	
 	public static boolean checkHash(String hash) {
-		int counter = 0;
+		int counter8 = 0;
 		if(hash.charAt(0) == '0' &&
 				hash.charAt(1) == '0' &&
 				hash.charAt(2) == '0' &&
@@ -43,19 +44,13 @@ public class Dec5b {
 				hash.charAt(4) == '0') {
 			char c = hash.charAt(5);
 			int pos = Character.valueOf(c)-48;
-			if(pos < 8) {
+			if(pos < 8 && password[pos] == '\u0000') {
 				
 				password[pos] = hash.charAt(6);
 				System.out.println("Found letter: " + hash.charAt(6) + " goes into position: " + pos);
-				for(int i = 0; i < 8; i++) {
-					if(password[i] == '\u0000') {
-						counter++;
-					}
-				}
-				
-//				counter8++;
+				counter8++;
 			}
-			if(counter == 0) return false;
+			if(counter8 == 8) return false;
 		}
 		return true;
 	}
