@@ -5,8 +5,8 @@ public class Controller {
 	int probability;
 	double odds;
 
-	OddsConverterPanel viewer;
-	public Controller(OddsConverterPanel viewer) {
+	StryktipsPanel viewer;
+	public Controller(StryktipsPanel viewer) {
 		this.viewer = viewer;
 		
 		
