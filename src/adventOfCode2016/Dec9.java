@@ -28,7 +28,11 @@ public class Dec9 {
 			returnStr += repStr;
 		}
 		
+<<<<<<< Updated upstream
 //		System.out.println(returnStr);
+=======
+		System.out.println(returnStr);
+>>>>>>> Stashed changes
 		return returnStr + createSub(str.substring(indexOfLetterAfterMarker + numOfChars));
 		
 		
