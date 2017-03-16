@@ -7,7 +7,6 @@ public class StryktipsAPP extends JPanel{
 	
 	public StryktipsAPP() {
 	}
-
 	
 	public static void main(String[] args) {
 		JFrame frame = new JFrame("Stryktipshjälpen");
