@@ -43,11 +43,8 @@ public class Dec9b {
 	}
 	
 }
-<<<<<<< Updated upstream
 
 
 
 
 
-=======
->>>>>>> Stashed changes
