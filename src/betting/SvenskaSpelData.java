@@ -10,11 +10,10 @@ import java.nio.charset.Charset;
  */
 public class SvenskaSpelData {
 
-    private JSONArray draws = null;
     private final int HOME = 0, DRAW = 1, AWAY = 2;
-    private String[] matches = new String[13];
-    private String[][] procents = new String[13][3];
-    private String[][] odds = new String[13][3];
+    String[] matches = new String[13];
+    String[][] procents = new String[13][3];
+    private JSONArray draws = null;
 
 
     public SvenskaSpelData()  {
@@ -26,7 +25,6 @@ public class SvenskaSpelData {
         JSONArray events = draws.getJSONObject(0).getJSONArray("events");
         JSONObject currentDistr;
         JSONObject currentGame;
-        JSONObject currentGameOdds;
         //get the games 1-13 and store it in instance variable matches
         for(int i = 0; i < events.length(); i++) {
             currentGame = events.getJSONObject(i);
@@ -35,18 +33,6 @@ public class SvenskaSpelData {
             procents[i][HOME] = currentDistr.getString("home");
             procents[i][DRAW] = currentDistr.getString("draw");
             procents[i][AWAY] = currentDistr.getString("away");
-            currentGameOdds = currentGame.getJSONObject("odds");
-            if(!currentGameOdds.isNull("home")){
-                odds[i][HOME] = currentGameOdds.getString("home").replace(",", ".");
-                odds[i][DRAW] = currentGameOdds.getString("draw").replace(",", ".");
-                odds[i][AWAY] = currentGameOdds.getString("away").replace(",", ".");
-            } else {
-                odds[i][HOME] = "0";
-                odds[i][DRAW] = "0";
-                odds[i][AWAY] = "0";
-            }
-
-
         }
     }
 
@@ -89,17 +75,10 @@ public class SvenskaSpelData {
         return draws.getJSONObject(0).getString("drawComment");
     }
 
-    public int getTurnOver() {
-        return Integer.parseInt(draws.getJSONObject(0).getString("turnover").split(",")[0]);
-    }
-
     public String[][] getProcents() {
         return this.procents;
     }
 
-    public String[][] getOdds() {
-        return this.odds;
-    }
     public static void main(String[] args) throws IOException {
 
 

@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
+
 import javax.swing.*;
 
 public class StryktipsPanel extends JPanel {
@@ -19,8 +20,7 @@ public class StryktipsPanel extends JPanel {
 	JPanel[] pnlProcents = new JPanel[13];
 	JPanel[] pnlOddses = new JPanel[13];
 	Checkbox[][] checkBoxes = new Checkbox[13][3];
-	JLabel jblTitle = new JLabel("<html><div style='text-align: center;'>" + "VECKANS OMGÅNG" + "</div></html>");
-	JLabel jblTurnOver = new JLabel();
+	JLabel title = new JLabel("<html><div style='text-align: center;'>" + "VECKANS OMGÅNG" + "</div></html>");
 	JLabel[][] lblProcents = new JLabel[13][3];
 	JLabel[][] lblOddses = new JLabel[13][3];
 	JPanel pnlCheckBox = new JPanel();
@@ -36,7 +36,6 @@ public class StryktipsPanel extends JPanel {
 	
 	private Font font = new Font("SansSerif", Font.BOLD, 14);
 	private Font fontTitle = new Font("Arial", Font.BOLD, 20);
-	private Font fontTurnOver = new Font("Arial", Font.BOLD, 10);
 	
 	
 	
@@ -52,8 +51,8 @@ public class StryktipsPanel extends JPanel {
 //		pnlSouth.setBackground(Color.GREEN);
 		
 		//panel north
-		jblTitle.setFont(fontTitle);
-		pnlNorth.add(jblTitle);
+		title.setFont(fontTitle);
+		pnlNorth.add(title);
 		//panel center, includes gridlayout
 		pnlCenter.setLayout(new GridLayout(1,2));
 		pnlCenterLeft.setLayout(new GridLayout(13,1,GAP,GAP));
@@ -69,8 +68,7 @@ public class StryktipsPanel extends JPanel {
 		pnlCenter.add(pnlCenterLeft);
 		pnlCenter.add(pnlCenterRight);
 		//panel south, toggle buttons should be here
-		jblTurnOver.setFont(fontTurnOver);
-		pnlSouth.add(jblTurnOver);
+		
 		add(pnlSouth, BorderLayout.SOUTH);
 		add(pnlNorth, BorderLayout.NORTH);
 		add(pnlCenter);
@@ -80,18 +78,13 @@ public class StryktipsPanel extends JPanel {
 
 	private void loadDataFromSvenskaSpel() {
 		SvenskaSpelData ssd = new SvenskaSpelData();
-		jblTitle.setText(ssd.getWeekHeader());
-		jblTurnOver.setText("Omsättning: " + ssd.getTurnOver());
+		title.setText(ssd.getWeekHeader());
 		String[] games = ssd.getMatches();
 		String[][] procents = ssd.getProcents();
-		String[][] odds = ssd.getOdds();
 		for(int i = 0; i < 13; i++) {
 			pnlGames[i].add(new JLabel(games[i]));
 			for(int j = 0; j < 3; j++) {
 				lblProcents[i][j].setText(procents[i][j]+"%");
-				lblOddses[i][j].setText(odds[i][j]);
-				lblOddses[i][j].setBackground(Color.BLUE);
-				lblOddses[i][j].setOpaque(true);
 			}
 		}
 	}
@@ -149,17 +142,9 @@ public class StryktipsPanel extends JPanel {
 				int probability = Integer.parseInt(tfOdds.getText().toString());
 				controller.convertProbabilityToOdds(probability);
 			}
+			
 		}
-	}
-
-	public Color getColor(double power)
-	{
-		//Where "power" is a number between 0.0 and 1.0. 0.0 will return a bright red, 1.0 will return a bright green.
-		double H = power * 0.4; // Hue (note 0.4 = Green, see huge chart below)
-		double S = 0.9; // Saturation
-		double B = 0.9; // Brightness
-
-		return Color.getHSBColor((float)H, (float)S, (float)B);
+		
 	}
 	
 	
